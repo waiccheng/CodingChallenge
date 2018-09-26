@@ -1,4 +1,5 @@
-﻿using Given.Common;
+﻿using System;
+using Given.Common;
 using NUnit.Framework;
 
 namespace CodingChallenge.FamilyTree.Tests
@@ -6,21 +7,14 @@ namespace CodingChallenge.FamilyTree.Tests
     [TestFixture]
     public class TreeTests
     {
-        
-        [Test]
-        public void if_the_person_exists_in_tree_the_result_should_be_january()
+        [TestCase(1)]
+        [TestCase(33)]
+        [TestCase(22)]
+        public void if_the_person_exists_in_tree_the_result_should_be_their_birthday(int index)
         {
             var tree = FamilyTreeGenerator.Make();
-            var result = new Solution().GetBirthMonth(tree, "Joe");
-            result.ShouldEqual("January");
-        }
-           
-        [Test]
-        public void if__the_person_exists_at_the_top_tree_the_result_should_be_may()
-        {
-            var tree = FamilyTreeGenerator.Make();
-            var result = new Solution().GetBirthMonth(tree, "Ted");
-            result.ShouldEqual("May");
+            var result = new Solution().GetBirthMonth(tree, "Name" + index);
+            result.ShouldEqual(DateTime.Now.AddDays(index - 1).ToString("MMMM"));
         }
 
         [Test]
