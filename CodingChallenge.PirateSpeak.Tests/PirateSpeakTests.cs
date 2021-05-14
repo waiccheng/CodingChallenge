@@ -1,5 +1,4 @@
-﻿using Given.Common;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CodingChallenge.PirateSpeak.Tests
 {

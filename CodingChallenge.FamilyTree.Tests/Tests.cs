@@ -1,5 +1,4 @@
 ﻿using System;
-using Given.Common;
 using NUnit.Framework;
 
 namespace CodingChallenge.FamilyTree.Tests
@@ -14,7 +13,7 @@ namespace CodingChallenge.FamilyTree.Tests
         {
             var tree = FamilyTreeGenerator.Make();
             var result = new Solution().GetBirthMonth(tree, "Name" + index);
-            result.ShouldEqual(DateTime.Now.AddDays(index - 1).ToString("MMMM"));
+            Assert.AreEqual(result,DateTime.Now.AddDays(index - 1).ToString("MMMM"));
         }
 
         [Test]
@@ -22,7 +21,7 @@ namespace CodingChallenge.FamilyTree.Tests
         {
             var tree = FamilyTreeGenerator.Make();
             var result = new Solution().GetBirthMonth(tree, "Jeebus");
-            result.ShouldEqual("");
+            Assert.AreEqual("",result);
         }
     }
 }
